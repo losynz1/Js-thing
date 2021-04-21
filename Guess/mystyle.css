@@ -1,0 +1,41 @@
+body{
+	padding: 50px;
+}
+
+h1{
+	color: #659DBD;
+}
+
+h2{
+	color: #DAAD86;
+}
+
+span{
+	color: darkred;
+}
+
+button{
+	background-color:#f66f6a;
+	color:white;
+	width: 150px;
+	height: 45px;
+	border:0;
+	margin: 5px;
+	font-size: 16px;
+	box-sizing: content-box;				
+	border-radius: 5px;
+	display:block-inlinep;
+}
+
+h2#cl{
+	color: indianred;
+}
+
+button:hover{
+	background-color: #a54b4a;
+}
+
+input{
+	height: 25px;
+}
+

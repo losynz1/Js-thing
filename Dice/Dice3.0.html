@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title> Basic Dice Game</title>
+    <style>
+		pre{
+			font-family: Apple Chancery, cursive;
+		}
+		span{
+			display: block;
+			color: #DAAD86;
+			font-size:20px;
+		}
+		body{
+			padding: 50px;
+			font-family: Apple Chancery, cursive;
+		}
+        img {
+            width: 139px;
+        }
+        p {
+            display: block;
+			color: #DAAD86;
+			font-size:20px;
+        }
+		button {
+			background-color:#f66f6a;
+			color:white;
+			width: 150px;
+			height: 45px;
+			border:0;
+			margin: 5px;
+			font-size: 16px;
+			box-sizing: content-box;				
+			border-radius: 5px;
+			display:block-inlinep;
+			font-family: Apple Chancery, cursive;
+		}
+		button:hover{
+			background-color: #a54b4a;
+		}
+    </style>
+</head>
+ 
+<body>
+ 
+    <script>
+		var score = 0;
+		
+        function randDice() {
+            var number = Math.floor(Math.random() * 6) + 1;
+            return number;
+        }
+ 
+ 
+        function rollDice() {
+ 
+            player = document.getElementById("num").value;
+            computer = randDice();
+ 
+           if (player == 1) {
+                document.getElementById('playerDie').src = 'Images/die1.png';
+            } else if (player == 2) {
+                document.getElementById('playerDie').src = 'Images/die2.png';
+            } else if (player == 3) {
+                document.getElementById('playerDie').src = 'Images/die3.png';
+            } else if (player == 4) {
+                document.getElementById('playerDie').src = 'Images/die4.png';
+            } else if (player == 5) {
+                document.getElementById('playerDie').src = 'Images/die5.png';
+            } else if (player == 6) {
+                document.getElementById('playerDie').src = 'Images/die6.png'
+            }
+ 
+            if (computer == 1) {
+                document.getElementById('computerDie').src = 'Images/die1.png';
+            } else if (computer == 2) {
+                document.getElementById('computerDie').src = 'Images/die2.png';
+            } else if (computer == 3) {
+                document.getElementById('computerDie').src = 'Images/die3.png';
+            } else if (computer == 4) {
+                document.getElementById('computerDie').src = 'Images/die4.png';
+            } else if (computer == 5) {
+                document.getElementById('computerDie').src = 'Images/die5.png';
+            } else if (computer == 6) {
+                document.getElementById('computerDie').src = 'Images/die6.png';
+            }
+ 
+            checkWin(player, computer);
+ 
+        }
+		
+		function rollingDice(){
+			var wait = 200;
+				
+			document.getElementById('playerDie').src= 'die3.png';
+			document.getElementById('computerDie').src='die6.png';
+		
+			setTimeout(function(){ 
+				document.getElementById('playerDie').src= 'die4.png';
+				document.getElementById('computerDie').src='die1.png'; 
+			}, wait);
+			
+			setTimeout(function(){ 
+			
+				document.getElementById('playerDie').src= 'die5.png';
+				document.getElementById('computerDie').src='die2.png'; 
+			}, wait*2);
+			
+			setTimeout(function(){ 
+		
+				document.getElementById('playerDie').src= 'die6.png';
+				document.getElementById('computerDie').src='die3.png'; 
+			}, wait*3);
+			
+			setTimeout(function(){ 
+				document.getElementById('playerDie').src= 'die1.png';
+				document.getElementById('computerDie').src='die4.png'; 
+			}, wait*4);
+			
+			setTimeout(function(){ 
+				document.getElementById('playerDie').src= 'die2.png';
+				document.getElementById('computerDie').src='die5.png'; 
+			}, wait*5);
+		
+			setTimeout(function(){ 
+				rollDice();
+			}, wait*6);
+		
+			}
+
+ 
+        function checkWin(person, comp) {
+ 
+            if (person == comp) {
+                document.getElementById("winner").innerHTML = "You win";
+				alert("You Win!");
+				score = score + 1;
+				document.getElementById('score').innerHTML = score;
+            } else if (person > comp) {
+                document.getElementById("winner").innerHTML = "Computer Wins";
+            } else {
+                document.getElementById("winner").innerHTML = "Computer Wins";
+            }
+        }
+		function reset(){
+			document.getElementById('playerDie').src = 'Images/die1.png';
+			document.getElementById('computerDie').src = 'Images/die1.png';
+			score = 0;
+			document.getElementById('score').innerHTML = score;
+			
+		}
+    </script>
+ 
+    <h1>Roll The Dice</h1>
+	
+	<p>Input Your Guess <input type="text" id ="num"></p>
+ 
+    <p id="winner">---------</p>
+	<span>Score: </span><span id="score">0</span>
+ 
+ 
+ 
+    <img id="playerDie" src="Images/die1.png">
+    <img id="computerDie" src="Images/die1.png">
+    <br>
+    <pre>          YOU                 COMPUTER </pre>
+    <br>
+ 
+    <button onclick="rollingDice();">Roll The Dice</button>
+	<button onclick="reset();">Reset</button>
+ 
+</body>
+ 
+</html>
+
